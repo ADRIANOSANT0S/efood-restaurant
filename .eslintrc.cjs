@@ -1,4 +1,4 @@
-const { version } = require("react");
+const { version } = require('react')
 
 module.exports = {
   root: true,
@@ -15,15 +15,15 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': [
       'warn',
-      { allowConstantExport: true },
+      { allowConstantExport: true }
     ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/props-types': 'off',
     'react/react-in-jsx-scope': 'off',
-    'typescript-eslint/explicit-module-boundary-types': 'off'
+    'typescript-eslint/explicit-module-boundary-types': 'off',
   },
-  'settings': {
-    'react':{ 'version': 'detect' }
+  settings: {
+    react: { version: 'detect' }
   }
 }
