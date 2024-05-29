@@ -35,7 +35,7 @@ const DishList = ({ imgBg, title, subTitle, dishes }: Props) => (
             key={dish.id}
             img={dish.img}
             title={dish.title}
-            details={dish.details}
+            details={`Imagem do prato ${dish.title}`}
             description={dish.description}
           />
         ))}
