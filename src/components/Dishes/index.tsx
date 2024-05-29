@@ -5,14 +5,13 @@ import { DishContainer, InfosContainer, Title } from './styles'
 
 type Props = {
   img: string
-  details: string
   title: string
   description: string
 }
 
-const Dishes = ({ img, details, title, description }: Props) => (
+const Dishes = ({ img, title, description }: Props) => (
   <DishContainer>
-    <img src={img} alt={details} />
+    <img src={img} alt={title} />
     <InfosContainer>
       <Title>{title}</Title>
       <TextP color={'orange'}>{description}</TextP>
