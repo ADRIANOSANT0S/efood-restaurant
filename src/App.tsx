@@ -1,14 +1,15 @@
+import { BrowserRouter } from 'react-router-dom'
 import { GlobalStyles } from './GlobalStyles'
 import Footer from './components/Footer'
-import Header from './components/Header'
+import Rotas from './routes'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyles />
-      <Header isHome={false} />;
+      <Rotas />
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 
