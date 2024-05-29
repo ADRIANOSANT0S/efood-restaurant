@@ -9,7 +9,10 @@ import x from '../../assets/images/social/x.png'
 import imageBg from '../../assets/images/imagem-bg.png'
 
 const Footer = () => (
-  <BackgroundImag url={imageBg}>
+  <BackgroundImag
+    url={imageBg}
+    description="Imagem de garfos e colher em um fundo alaranjado"
+  >
     <FooterContainer className="container">
       <div>
         <img src={logo} alt="VETOR" />
