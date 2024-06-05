@@ -1,12 +1,13 @@
 import BackgroundImag from '../BackgroundImag'
-
-import { FooterContainer, SocialLink, TextFooter } from './styles'
+import ImageLink from '../ImagLink'
 
 import logo from '../../assets/images/logo.png'
 import Instagram from '../../assets/images/social/instagram.png'
 import Facebook from '../../assets/images/social/facebook.png'
-import x from '../../assets/images/social/x.png'
+import X from '../../assets/images/social/x.png'
 import imageBg from '../../assets/images/imagem-bg.png'
+
+import { FooterContainer, SocialLink, TextFooter } from './styles'
 
 const Footer = () => (
   <BackgroundImag
@@ -15,27 +16,25 @@ const Footer = () => (
   >
     <FooterContainer className="container">
       <div>
-        <img src={logo} alt="VETOR" />
+        <ImageLink to="/" image={logo} description="Logo da marca Efood" />
         <SocialLink>
           <li>
-            <a href="#">
-              <img src={Instagram} alt="Logo Instagram" />
-            </a>
+            <ImageLink
+              to="/"
+              image={Instagram}
+              description="Logo do Instagram"
+            />
           </li>
           <li>
-            <a href="#">
-              <img src={Facebook} alt="Logo Facebook" />
-            </a>
+            <ImageLink to="/" image={Facebook} description="Logo do Facebook" />
           </li>
           <li>
-            <a href="#">
-              <img src={x} alt="Logo x" />
-            </a>
+            <ImageLink to="/" image={X} description="Logo do X" />
           </li>
         </SocialLink>
       </div>
       <TextFooter>
-        A efood é uma plataforma para divulgação de estabelecimentos, a
+        A Efood é uma plataforma para divulgação de estabelecimentos, a
         responsabilidade pela entrega, qualidade dos produtos é toda do
         estabelecimento contratado.
       </TextFooter>

@@ -1,7 +1,5 @@
 import Dish from '../../models/Dish'
-
 import Dishes from '../Dishes'
-
 import BackgroundImag from '../BackgroundImag'
 
 import {
@@ -14,7 +12,6 @@ import {
 
 type Props = {
   imgBg: string
-  details: string
   title: string
   subTitle: string
   dishes: Dish[]
@@ -25,7 +22,7 @@ const DishList = ({ imgBg, title, subTitle, dishes }: Props) => (
     <BackgroundImag url={imgBg} description={title}>
       <DishSection className="container">
         <TitleCountry>{subTitle}</TitleCountry>
-        <RestaurantTitle as="h1">{title}</RestaurantTitle>
+        <RestaurantTitle as="h1">{title}</RestaurantTitle>e
       </DishSection>
     </BackgroundImag>
     <div className="container">
@@ -35,7 +32,6 @@ const DishList = ({ imgBg, title, subTitle, dishes }: Props) => (
             key={dish.id}
             img={dish.img}
             title={dish.title}
-            details={`Imagem do prato ${dish.title}`}
             description={dish.description}
           />
         ))}

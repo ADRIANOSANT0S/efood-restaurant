@@ -16,6 +16,7 @@ type Props = {
 import {
   ItemContainer,
   DetailsContainer,
+  Title,
   InfosContainer,
   StarContainer
 } from './styles'
@@ -37,14 +38,15 @@ const Restaurant = ({
     </BackgroundImag>
     <DetailsContainer>
       <InfosContainer>
-        <h2>{title}</h2>
+        <Title>{title}</Title>
         <StarContainer>
-          <span>{nota}</span>
+          <Title as="span">{nota}</Title>
           <img src={star} alt="estrelas de favoritos" />
         </StarContainer>
       </InfosContainer>
       <TextP color={'red'}>{description}</TextP>
       <ButtonLink
+        size="small"
         type="link"
         to="/pratos"
         title="Click aqui para saber mais detalhes do restaurante"

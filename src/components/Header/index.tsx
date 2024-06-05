@@ -1,11 +1,11 @@
-import { Text, Container, NavContainer } from './styles'
-
 import BackgroundImag from '../BackgroundImag'
 
 import logo from '../../assets/images/logo.png'
 import imageBg from '../../assets/images/imagem-bg.png'
 import Button from '../Button'
-import { Link } from 'react-router-dom'
+import ImageLink from '../ImagLink'
+
+import { Text, Container, NavContainer } from './styles'
 
 export type Props = {
   isHome: boolean
@@ -20,20 +20,16 @@ const Header = ({ isHome = false }: Props) => (
       <div className="container">
         {isHome ? (
           <Container>
-            <Link to="/">
-              <img src={logo} alt="Logo E-food" />
-            </Link>
+            <ImageLink to="/" image={logo} description="loga da marca Efood" />
             <Text>Viva experiências gastronômicas no conforto da sua casa</Text>
           </Container>
         ) : (
           <NavContainer>
-            <Button type="link" to="/" title="Ir para página home">
+            <Button type="link" to="/" title="Ir para página home" size="big">
               Restaurantes
             </Button>
-            <Link to="/">
-              <img src={logo} alt="Logo E-food" />
-            </Link>
-            <Button type="link" to="/" title="Ir para o carrinho">
+            <ImageLink to="/" image={logo} description="Logo da marca Efood" />
+            <Button type="link" to="/" title="Ir para o carrinho" size="big">
               0 Produtos(s) no carrinho
             </Button>
           </NavContainer>

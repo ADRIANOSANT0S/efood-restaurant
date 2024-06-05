@@ -8,7 +8,7 @@ export const Main = styled.main`
   }
 `
 export const DishSection = styled.section`
-  padding: 24px 32px;
+  padding: 24px 0;
   display: flex;
   flex-direction: column;
   gap: 160px;
@@ -31,7 +31,7 @@ export const RestaurantTitle = styled(TitleCountry)`
 export const DishesList = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 32px;
   padding: 56px 0 120px 0;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
