@@ -56,7 +56,6 @@ const DishesPage = () => (
     <Header isHome={false} />
     <DishList
       imgBg={carbonara}
-      details="Prato de macarrão carbonara"
       title="La Dolce Vita Trattoria"
       subTitle="Italiana"
       dishes={dish}
