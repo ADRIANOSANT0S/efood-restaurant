@@ -22,7 +22,7 @@ const DishList = ({ imgBg, title, subTitle, dishes }: Props) => (
     <BackgroundImag url={imgBg} description={title}>
       <DishSection className="container">
         <TitleCountry>{subTitle}</TitleCountry>
-        <RestaurantTitle as="h1">{title}</RestaurantTitle>e
+        <RestaurantTitle as="h1">{title}</RestaurantTitle>
       </DishSection>
     </BackgroundImag>
     <div className="container">
