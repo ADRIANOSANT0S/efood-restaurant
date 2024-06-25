@@ -1,10 +1,11 @@
+import { ReactNode } from 'react'
 import { ButtonContainer, ButtonLink } from './styles'
 
 export type Props = {
   type?: 'button' | 'link'
   to?: string
   onClick?: () => void
-  children: string
+  children: ReactNode
   title: string
   size?: 'small' | 'big'
 }

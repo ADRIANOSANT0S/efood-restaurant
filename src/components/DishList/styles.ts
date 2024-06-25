@@ -5,20 +5,35 @@ import { colors } from '../../GlobalStyles'
 export const Main = styled.main`
   ${ImageBg} {
     height: 280px;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.45);
+      z-index: 0;
+    }
   }
 `
 export const DishSection = styled.section`
-  padding: 24px 0;
+  position: relative;
+  padding: 24px 0 32px 0;
   display: flex;
   flex-direction: column;
-  gap: 160px;
+  gap: 149px;
+  z-index: 2;
+  height: 100%;
 `
 
 export const TitleCountry = styled.h2`
   color: ${colors.white};
   font-size: 32px;
   font-weight: 100;
-  line-height: 40px;
+  line-height: 37.5px;
 
   @media screen and (max-width: 768px) {
     font-size: 24px;

@@ -1,4 +1,4 @@
-import Dish from '../../models/Dish'
+import { CardapioItem } from '../../pages/Home'
 import Dishes from '../Dishes'
 import BackgroundImag from '../BackgroundImag'
 
@@ -14,25 +14,29 @@ type Props = {
   imgBg: string
   title: string
   subTitle: string
-  dishes: Dish[]
+  restaurantDishes: CardapioItem[]
 }
 
-const DishList = ({ imgBg, title, subTitle, dishes }: Props) => (
+const DishList = ({ imgBg, title, subTitle, restaurantDishes }: Props) => (
   <Main>
     <BackgroundImag url={imgBg} description={title}>
       <DishSection className="container">
         <TitleCountry>{subTitle}</TitleCountry>
         <RestaurantTitle as="h1">{title}</RestaurantTitle>
       </DishSection>
+      <div className="overlay"></div>
     </BackgroundImag>
     <div className="container">
       <DishesList>
-        {dishes.map((dish) => (
+        {restaurantDishes.map((dish) => (
           <Dishes
             key={dish.id}
-            img={dish.img}
-            title={dish.title}
-            description={dish.description}
+            img={dish.foto}
+            title={dish.nome}
+            description={dish.descricao}
+            porcao={dish.porcao}
+            foto={dish.foto}
+            preco={dish.preco}
           />
         ))}
       </DishesList>

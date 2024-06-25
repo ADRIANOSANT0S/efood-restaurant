@@ -1,7 +1,8 @@
+import { ReactNode } from 'react'
 import { Text } from './styles'
 
 export type Props = {
-  children: string
+  children: ReactNode
   color: 'red' | 'white' | 'orange'
 }
 

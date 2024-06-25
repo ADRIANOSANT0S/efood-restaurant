@@ -1,17 +1,9 @@
 import BackgroundImag from '../BackgroundImag'
 import Tag from '../Tag'
 import TextP from '../TextP'
+import { ButtonLink } from '../Button/styles'
 
 import star from '../../assets/images/star_favorite.png'
-
-type Props = {
-  image: string
-  details: string
-  tags: string[]
-  title: string
-  nota: string
-  description: string
-}
 
 import {
   ItemContainer,
@@ -20,41 +12,55 @@ import {
   InfosContainer,
   StarContainer
 } from './styles'
-import { ButtonLink } from '../Button/styles'
+import getLimitDescription from '../../utils'
+
+type Props = {
+  image: string
+  highline: boolean
+  type: number
+  title: string
+  nota: number
+  description: string
+  id: number
+}
 
 const Restaurant = ({
   image,
-  details,
-  tags,
+  highline,
+  type,
   title,
   nota,
-  description
-}: Props) => (
-  <ItemContainer>
-    <BackgroundImag url={image} description={details}>
-      {tags.map((tag) => (
-        <Tag key={tag}>{tag}</Tag>
-      ))}
-    </BackgroundImag>
-    <DetailsContainer>
-      <InfosContainer>
-        <Title>{title}</Title>
-        <StarContainer>
-          <Title as="span">{nota}</Title>
-          <img src={star} alt="estrelas de favoritos" />
-        </StarContainer>
-      </InfosContainer>
-      <TextP color={'red'}>{description}</TextP>
-      <ButtonLink
-        size="small"
-        type="link"
-        to="/pratos"
-        title="Click aqui para saber mais detalhes do restaurante"
-      >
-        Saiba mais
-      </ButtonLink>
-    </DetailsContainer>
-  </ItemContainer>
-)
+  description,
+  id
+}: Props) => {
+  return (
+    <ItemContainer>
+      <BackgroundImag url={image} description={title}>
+        {highline ? <Tag>Destaque da semana</Tag> : ''}
+        <Tag>{type}</Tag>
+      </BackgroundImag>
+      <DetailsContainer>
+        <InfosContainer>
+          <Title>{title}</Title>
+          <StarContainer>
+            <Title as="span">{nota}</Title>
+            <img src={star} alt="estrelas de favoritos" />
+          </StarContainer>
+        </InfosContainer>
+        <TextP color={'red'}>
+          {getLimitDescription(description, 270, 0, 250)}
+        </TextP>
+        <ButtonLink
+          size="small"
+          type="link"
+          to={`/pratos/${id}`}
+          title="Click aqui para saber mais detalhes do restaurante"
+        >
+          Saiba mais
+        </ButtonLink>
+      </DetailsContainer>
+    </ItemContainer>
+  )
+}
 
 export default Restaurant

@@ -1,66 +1,39 @@
-import Dish from '../../models/Dish'
-
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import DishList from '../../components/DishList'
 import Header from '../../components/Header'
 
-import carbonara from '../../assets/images/imageBg/dishBg.png'
-import pizza from '../../assets/images/foods/pizza.png'
+import { RestaurantsData } from '../Home'
 
-const dish: Dish[] = [
-  {
-    id: 1,
-    img: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 2,
-    img: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 3,
-    img: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 4,
-    img: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 5,
-    img: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 6,
-    img: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
+const DishesPage = () => {
+  const { id } = useParams()
+  const [restaurants, setRestaurants] = useState<RestaurantsData[]>([])
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setRestaurants([res]))
+      .catch((error) => alert(`Erro ao buscar os dados: ${error}`))
+  }, [id])
+
+  if (!restaurants) {
+    return <h3>Carregando...</h3>
   }
-]
 
-const DishesPage = () => (
-  <>
-    <Header isHome={false} />
-    <DishList
-      imgBg={carbonara}
-      title="La Dolce Vita Trattoria"
-      subTitle="Italiana"
-      dishes={dish}
-    />
-  </>
-)
+  return (
+    <>
+      <Header isHome={false} />
+      {restaurants.map((restaurant) => (
+        <DishList
+          key={restaurant.id}
+          imgBg={restaurant.capa}
+          title={restaurant.titulo}
+          subTitle={restaurant.tipo}
+          restaurantDishes={restaurant.cardapio}
+        />
+      ))}
+    </>
+  )
+}
 
 export default DishesPage

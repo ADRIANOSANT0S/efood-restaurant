@@ -11,10 +11,11 @@ export const ButtonContainer = styled.button`
   font-weight: 700;
   line-height: 16px;
   text-align: center;
-  padding: 4px 0;
+  padding: 4px 8px;
   background-color: ${colors.orange};
   color: ${colors.red};
   border: none;
+  cursor: pointer;
 `
 export const ButtonLink = styled(Link)<Props>`
   font-size: ${(prop) => (prop.size === 'small' ? '14px' : '18px')};

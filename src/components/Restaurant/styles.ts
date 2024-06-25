@@ -3,7 +3,8 @@ import { ImageBg } from '../BackgroundImag/styles'
 import { colors } from '../../GlobalStyles'
 
 export const ItemContainer = styled.li`
-  width: 472px;
+  max-width: 472px;
+  width: 100%;
   height: 400px;
 
   ${ImageBg} {
