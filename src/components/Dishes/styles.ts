@@ -70,6 +70,10 @@ export const ModalContainer = styled.div`
     object-fit: all;
     width: 280px;
     height: 280px;
+
+    &:last-of-type {
+      cursor: pointer;
+    }
   }
 
   .close {
