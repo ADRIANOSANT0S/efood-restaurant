@@ -4,18 +4,17 @@ import { colors } from '../../GlobalStyles'
 
 export const Main = styled.main`
   ${ImageBg} {
-    height: 280px;
     position: relative;
+    height: 280px;
 
-    .overlay {
+    &::before {
       position: absolute;
       content: '';
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.45);
-      z-index: 0;
+      background-color: rgba(0, 0, 0, 0.4);
     }
   }
 `
@@ -25,7 +24,6 @@ export const DishSection = styled.section`
   display: flex;
   flex-direction: column;
   gap: 149px;
-  z-index: 2;
   height: 100%;
 `
 
