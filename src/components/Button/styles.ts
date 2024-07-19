@@ -9,7 +9,7 @@ export const ButtonContainer = styled.button`
   display: block;
   font-size: 14px;
   font-weight: 700;
-  line-height: 16px;
+  line-height: 16.41px;
   text-align: center;
   padding: 4px 8px;
   background-color: ${colors.orange};
