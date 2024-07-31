@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/card'
 import Button from '../Button'
 import TextP from '../TextP'
 import close from '../../assets/images/close.png'
-
 import {
   DishContainer,
   InfosContainer,
@@ -12,7 +12,8 @@ import {
   TitleModal,
   InfosModal
 } from './styles'
-import getLimitDescription from '../../utils'
+import { getLimitDescription, moneyFormat } from '../../utils'
+import { useState } from 'react'
 
 type Props = {
   img: string
@@ -21,16 +22,26 @@ type Props = {
   porcao: string
   foto: string
   preco: number
-}
-
-const moneyFormat = (preci: number) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preci)
+  id: number
 }
 
 const Dishes = ({ img, title, description, porcao, foto, preco }: Props) => {
+  const dispatch = useDispatch()
+
+  const addToCard = () => {
+    dispatch(
+      add({
+        preco,
+        id: 0,
+        foto: '',
+        nome: '',
+        descricao: '',
+        porcao: ''
+      })
+    )
+    dispatch(open())
+  }
+
   const [modalVisible, setModalVisible] = useState(false)
 
   const toggleModal = () => {
@@ -47,7 +58,7 @@ const Dishes = ({ img, title, description, porcao, foto, preco }: Props) => {
         </TextP>
         <Button
           type="button"
-          title="click aqui para adicionar item ao carrinho"
+          title="Click aqui para adicionar item ao carrinho"
           onClick={toggleModal}
         >
           Adicionar ao carrinho
@@ -61,7 +72,11 @@ const Dishes = ({ img, title, description, porcao, foto, preco }: Props) => {
             <TitleModal>{title}</TitleModal>
             <TextP color={'white'}>{description}</TextP>
             <span>{porcao}</span>
-            <Button type="button" title={'Adicionar ao carrinho'}>
+            <Button
+              type="button"
+              title={'Adicionar ao carrinho'}
+              onClick={addToCard}
+            >
               Adicionar ao carrinho - {moneyFormat(preco)}
             </Button>
           </InfosModal>

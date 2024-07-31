@@ -1,7 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 
+import cardReducer from './reducers/card'
+
+import api from '../services/api'
+
 const store = configureStore({
-  reducer: {}
+  reducer: {
+    card: cardReducer,
+    [api.reducerPath]: api.reducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware)
 })
 
 export default store

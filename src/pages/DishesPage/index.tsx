@@ -1,37 +1,36 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+
+import { useGetDishesQuery } from '../../services/api'
+
 import DishList from '../../components/DishList'
 import Header from '../../components/Header'
 
-import { RestaurantsData } from '../Home'
-
 const DishesPage = () => {
   const { id } = useParams()
-  const [restaurants, setRestaurants] = useState<RestaurantsData[]>([])
+  const { data: restaurant, isLoading, error } = useGetDishesQuery(id!)
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurants([res]))
-      .catch((error) => alert(`Erro ao buscar os dados: ${error}`))
-  }, [id])
-
-  if (!restaurants) {
+  if (isLoading) {
     return <h3>Carregando...</h3>
+  }
+
+  if (error) {
+    return <h3>Erro ao buscar os dados.</h3>
+  }
+
+  if (!restaurant) {
+    return <h3>Restaurante não encontrado</h3>
   }
 
   return (
     <>
       <Header isHome={false} />
-      {restaurants.map((restaurant) => (
-        <DishList
-          key={restaurant.id}
-          imgBg={restaurant.capa}
-          title={restaurant.titulo}
-          subTitle={restaurant.tipo}
-          restaurantDishes={restaurant.cardapio}
-        />
-      ))}
+      <DishList
+        key={restaurant.id}
+        imgBg={restaurant.capa}
+        title={restaurant.titulo}
+        subTitle={restaurant.tipo}
+        restaurantDishes={restaurant.cardapio}
+      />
     </>
   )
 }

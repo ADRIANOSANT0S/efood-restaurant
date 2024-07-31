@@ -12,7 +12,7 @@ import {
   InfosContainer,
   StarContainer
 } from './styles'
-import getLimitDescription from '../../utils'
+import { getLimitDescription } from '../../utils'
 
 type Props = {
   image: string

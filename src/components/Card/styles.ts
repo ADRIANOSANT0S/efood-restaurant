@@ -20,8 +20,14 @@ export const CardContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100dvh;
-  display: flex;
+  display: none;
   justify-content: flex-end;
+  transition: 0.5 ease;
+
+  &.is-open {
+    display: flex;
+    transition: 0.5 ease;
+  }
 
   ul {
     display: flex;

@@ -1,4 +1,4 @@
-const getLimitDescription = (
+export const getLimitDescription = (
   text: string,
   lengthString: number,
   startSlice: number,
@@ -11,4 +11,9 @@ const getLimitDescription = (
   }
 }
 
-export default getLimitDescription
+export const moneyFormat = (preci: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preci)
+}
