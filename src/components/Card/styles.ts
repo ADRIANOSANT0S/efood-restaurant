@@ -36,6 +36,11 @@ export const CardContainer = styled.div`
     margin-bottom: 40px;
   }
 `
+export const CardEntry = styled.h3`
+  font-size: 16px;
+  font-weight: 500;
+  color: ${colors.white2};
+`
 
 export const Aside = styled.aside`
   max-width: 360px;

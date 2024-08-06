@@ -1,8 +1,13 @@
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/card'
+import { getLimitDescription, moneyFormat } from '../../utils'
+
+import { CardapioItem } from '../../pages/Home'
+
 import Button from '../Button'
 import TextP from '../TextP'
-import close from '../../assets/images/close.png'
+
 import {
   DishContainer,
   InfosContainer,
@@ -12,33 +17,17 @@ import {
   TitleModal,
   InfosModal
 } from './styles'
-import { getLimitDescription, moneyFormat } from '../../utils'
-import { useState } from 'react'
+import close from '../../assets/images/close.png'
 
 type Props = {
-  img: string
-  title: string
-  description: string
-  porcao: string
-  foto: string
-  preco: number
-  id: number
+  restaurantDishes: CardapioItem
 }
 
-const Dishes = ({ img, title, description, porcao, foto, preco }: Props) => {
+const Dishes = ({ restaurantDishes }: Props) => {
   const dispatch = useDispatch()
 
   const addToCard = () => {
-    dispatch(
-      add({
-        preco,
-        id: 0,
-        foto: '',
-        nome: '',
-        descricao: '',
-        porcao: ''
-      })
-    )
+    dispatch(add(restaurantDishes))
     dispatch(open())
   }
 
@@ -48,42 +37,57 @@ const Dishes = ({ img, title, description, porcao, foto, preco }: Props) => {
     setModalVisible(!modalVisible)
   }
 
+  if (!restaurantDishes) {
+    return null
+  }
+
+  const description = restaurantDishes.descricao || ''
+
   return (
-    <DishContainer>
-      <img src={img} alt={title} />
-      <InfosContainer>
-        <Title>{title}</Title>
-        <TextP color={'orange'}>
-          {getLimitDescription(description, 170, 0, 160)}
-        </TextP>
-        <Button
-          type="button"
-          title="Click aqui para adicionar item ao carrinho"
-          onClick={toggleModal}
-        >
-          Adicionar ao carrinho
-        </Button>
-      </InfosContainer>
-      <Modal className={modalVisible ? 'visible' : ''}>
-        <ModalContainer>
-          <img src={foto} alt={title} />
-          <img src={close} alt="x" className="close" onClick={toggleModal} />
-          <InfosModal>
-            <TitleModal>{title}</TitleModal>
-            <TextP color={'white'}>{description}</TextP>
-            <span>{porcao}</span>
-            <Button
-              type="button"
-              title={'Adicionar ao carrinho'}
-              onClick={addToCard}
-            >
-              Adicionar ao carrinho - {moneyFormat(preco)}
-            </Button>
-          </InfosModal>
-        </ModalContainer>
-        <div className="overlay" onClick={toggleModal}></div>
-      </Modal>
-    </DishContainer>
+    <>
+      <DishContainer>
+        <img src={restaurantDishes.foto} alt={restaurantDishes.nome} />
+        <InfosContainer>
+          <Title>{restaurantDishes.nome}</Title>
+          <TextP color={'orange'}>
+            {getLimitDescription(description, 170, 0, 160)}
+          </TextP>
+          <Button
+            type="button"
+            title="Click aqui para adicionar item ao carrinho"
+            onClick={toggleModal}
+          >
+            Adicionar ao carrinho
+          </Button>
+        </InfosContainer>
+        {modalVisible && (
+          <Modal className={modalVisible ? 'visible' : ''}>
+            <ModalContainer>
+              <img src={restaurantDishes.foto} alt={restaurantDishes.nome} />
+              <img
+                src={close}
+                alt="x"
+                className="close"
+                onClick={toggleModal}
+              />
+              <InfosModal>
+                <TitleModal>{restaurantDishes.nome}</TitleModal>
+                <TextP color={'white'}>{description}</TextP>
+                <span>{restaurantDishes.porcao}</span>
+                <Button
+                  type="button"
+                  title={'Adicionar ao carrinho'}
+                  onClick={addToCard}
+                >
+                  Adicionar ao carrinho - {moneyFormat(restaurantDishes.preco)}
+                </Button>
+              </InfosModal>
+            </ModalContainer>
+            <div className="overlay" onClick={toggleModal}></div>
+          </Modal>
+        )}
+      </DishContainer>
+    </>
   )
 }
 

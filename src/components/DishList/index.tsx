@@ -1,7 +1,5 @@
-import { CardapioItem } from '../../pages/Home'
 import Dishes from '../Dishes'
 import BackgroundImag from '../BackgroundImag'
-
 import {
   Main,
   DishSection,
@@ -9,6 +7,7 @@ import {
   RestaurantTitle,
   DishesList
 } from './styles'
+import { CardapioItem } from '../../pages/Home'
 
 type Props = {
   imgBg: string
@@ -29,16 +28,7 @@ const DishList = ({ imgBg, title, subTitle, restaurantDishes }: Props) => (
     <div className="container">
       <DishesList>
         {restaurantDishes.map((dish) => (
-          <Dishes
-            key={dish.id}
-            img={dish.foto}
-            title={dish.nome}
-            description={dish.descricao}
-            porcao={dish.porcao}
-            foto={dish.foto}
-            id={dish.id}
-            preco={dish.preco}
-          />
+          <Dishes key={dish.id} restaurantDishes={dish} />
         ))}
       </DishesList>
     </div>

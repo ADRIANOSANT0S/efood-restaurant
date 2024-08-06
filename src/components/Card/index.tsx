@@ -32,18 +32,13 @@ const Card = () => {
   }
 
   const getTotalPrice = () => {
-    return items?.reduce((accumulator, item) => {
-      return (
-        accumulator +
-        item.cardapio.reduce((cardapioAcc, cardapioItem) => {
-          return cardapioAcc + cardapioItem.preco
-        }, 0)
-      )
+    return items.reduce((acumulador, valorAtual) => {
+      return (acumulador += valorAtual.preco)
     }, 0)
   }
 
   if (!items) {
-    return <div>Loading...</div> // ou qualquer outro fallback apropriado
+    return <div>Loading...</div>
   }
 
   return (
@@ -54,14 +49,10 @@ const Card = () => {
           {items.length > 0 ? (
             items.map((item) => (
               <CardItem key={item.id}>
-                <img src={item.capa} alt={item.titulo} />
+                <img src={item.foto} alt={item.nome} />
                 <Price>
-                  <Title>{item.titulo}</Title>
-                  {item.cardapio.map((cardapioItem) => (
-                    <div key={cardapioItem.id}>
-                      <span>{moneyFormat(cardapioItem.preco)}</span>
-                    </div>
-                  ))}
+                  <Title>{item.nome}</Title>
+                  <Price>{moneyFormat(item.preco)}</Price>
                 </Price>
                 <Button
                   type="button"
@@ -76,7 +67,7 @@ const Card = () => {
               </CardItem>
             ))
           ) : (
-            <li>Não há itens no carrinho.</li>
+            <li></li>
           )}
         </ul>
         <div>
