@@ -338,6 +338,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
                 <Button
                   type="submit"
                   title="Click aqui para continuar a compra"
+                  onClick={form.handleSubmit}
                 >
                   Finalizar pagamento
                 </Button>
