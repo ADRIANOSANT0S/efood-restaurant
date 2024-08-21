@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -21,7 +20,6 @@ type CheckoutProps = {
 
 const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const [purchase, { data, isSuccess }] = usePurchaseMutation()
   const [isOrderSend, setIsOrderSend] = useState(false)
 
@@ -104,7 +102,6 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   }
 
   const finishBuy = () => {
-    setTimeout(() => navigate('/'), 300) // Add delay for better UX
     closeSidebar()
   }
 
@@ -124,6 +121,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(clean())
+      setTimeout(() => window.location.reload(), 300)
     }
   }, [isSuccess, dispatch])
 
