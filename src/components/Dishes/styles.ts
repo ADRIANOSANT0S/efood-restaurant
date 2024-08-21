@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../GlobalStyles'
-import { Text } from '../TextP/styles'
+import { Text } from '../Text/styles'
 
 export const DishContainer = styled.li`
   width: 320px;
