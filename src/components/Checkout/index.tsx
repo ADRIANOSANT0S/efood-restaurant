@@ -6,7 +6,6 @@ import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
 
 import Button from '../Button'
-import Sidebar from '../Sidebar'
 import Text from '../Text'
 
 import { usePurchaseMutation } from '../../services/api'
@@ -132,7 +131,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   }
 
   return (
-    <Sidebar>
+    <div>
       {isSuccess && data ? (
         <>
           <S.OrderConfirmation>
@@ -354,7 +353,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
           </form>
         </>
       )}
-    </Sidebar>
+    </div>
   )
 }
 

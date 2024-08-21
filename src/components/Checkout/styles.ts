@@ -24,7 +24,6 @@ export const title = styled.h2`
   color: ${colors.orange};
   margin-bottom: 16px;
 `
-
 export const InputGroup = styled.div`
   display: block;
   max-width: 344px;
