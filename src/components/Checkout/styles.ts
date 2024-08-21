@@ -10,7 +10,7 @@ export type SizeProp = {
 export const DataSendOrder = styled.div`
   display: none;
 
-  .showContainer {
+  &.showContainer {
     display: block;
   }
 `
