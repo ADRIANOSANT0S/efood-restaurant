@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../GlobalStyles'
+import { breakPointers, colors } from '../../GlobalStyles'
 import { ButtonLink } from '../Button/styles'
 
 export const Container = styled.div`
@@ -33,5 +33,14 @@ export const NavContainer = styled.nav`
     line-height: 22px;
     font-weight: 900;
     background-color: transparent;
+  }
+
+  @media screen and (max-width: ${breakPointers.tablet}) {
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: ${breakPointers.mobile}) {
+    flex-direction: column;
+    gap: 24px;
   }
 `

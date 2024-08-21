@@ -9,6 +9,11 @@ export const colors = {
   black: '#4B4B4B'
 }
 
+export const breakPointers = {
+  mobile: '768px',
+  tablet: '1023px'
+}
+
 export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
@@ -26,7 +31,13 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0 auto;
     max-width: 1024px;
     width: 100%;
+
+    @media screen and (max-width: ${breakPointers.tablet}) {
+    width: 90%;
+  }
+    @media screen and (max-width: ${breakPointers.mobile}) {
+    width: 90%;
+  }
   }
 
-  
 `

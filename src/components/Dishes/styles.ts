@@ -1,17 +1,22 @@
+import { breakPointers, colors } from './../../GlobalStyles/index'
 import styled from 'styled-components'
-import { colors } from '../../GlobalStyles'
 import { Text } from '../Text/styles'
 
 export const DishContainer = styled.li`
-  width: 320px;
+  max-width: 320px;
   height: 338px;
   padding: 8px;
   background-color: ${colors.red};
 
   img {
-    max-width: 304px;
     width: 100%;
     height: 168px;
+  }
+
+  @media screen and (max-width: ${breakPointers.mobile}) {
+    display: block;
+    width: 90%;
+    height: auto;
   }
 `
 export const Title = styled.h2`
@@ -67,7 +72,7 @@ export const ModalContainer = styled.div`
   background-color: ${colors.red};
 
   img {
-    object-fit: all;
+    object-fit: contain;
     width: 280px;
     height: 280px;
 
@@ -82,6 +87,24 @@ export const ModalContainer = styled.div`
     right: 8px;
     width: 16px;
     height: 16px;
+  }
+
+  @media screen and (max-width: ${breakPointers.tablet}) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: ${breakPointers.mobile}) {
+    max-width: 480px;
+    display: flex;
+    row-gap: 24px;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    padding: 24px 16px 16px 16px;
+
+    img {
+      width: 100%;
+    }
   }
 `
 export const TitleModal = styled.h3`

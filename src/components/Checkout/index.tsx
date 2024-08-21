@@ -71,7 +71,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
       purchase({
         products: [
           {
-            id: 1,
+            id: Number(data?.orderId),
             price: totalPrice
           }
         ],
@@ -278,7 +278,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
                   className={checkInputError('cardName') ? 'error' : ''}
                 />
               </S.InputGroup>
-              <S.InlineInputGroup widthElement={87}>
+              <S.InlineInputGroup size={87}>
                 <S.InputGroup>
                   <label htmlFor="cardNumber">Número do cartão</label>
                   <InputMask

@@ -49,50 +49,50 @@ const Card = () => {
           <S.CartContainer
             className={`cart-container ${showCheckout ? 'hide' : 'show'}`}
           >
-            <ul>
-              {items.length > 0 ? (
-                items.map((item) => (
-                  <>
-                    <S.CardItem key={item.id}>
-                      <img src={item.foto} alt={item.nome} />
-                      <S.Price>
-                        <S.Title>{item.nome}</S.Title>
-                        <S.Price>{moneyFormat(item.preco)}</S.Price>
-                      </S.Price>
-                      <Button
-                        type="button"
-                        title="Click aqui para remover esse item do carrinho"
-                        onClick={() => removeItem(item.id)}
-                      >
-                        <img
-                          src={trash}
-                          alt="Imagem de uma lixeira para apagar item do carrinho"
-                        />
-                      </Button>
-                    </S.CardItem>
-                    <div>
-                      <S.CardTotal color={'orange'}>
-                        <span>Valor total</span>
-                        <span>{moneyFormat(getTotalPrice())}</span>
-                      </S.CardTotal>
-                      <Button
-                        type="button"
-                        title="Continuar para a entrega"
-                        onClick={handleCheckout}
-                      >
-                        Continuar com a entrega
-                      </Button>
-                    </div>
-                  </>
-                ))
-              ) : (
-                <li>
-                  <Text color={'orange'}>
-                    Adicione um item ao carrinho para continuar com a compra.
-                  </Text>
-                </li>
-              )}
-            </ul>
+            {items.length > 0 ? (
+              <>
+                <ul>
+                  {items.map((item) => (
+                    <>
+                      <S.CardItem key={item.id}>
+                        <img src={item.foto} alt={item.nome} />
+                        <S.Price key={item.id}>
+                          <S.Title>{item.nome}</S.Title>
+                          <S.Price>{moneyFormat(item.preco)}</S.Price>
+                        </S.Price>
+                        <Button
+                          type="button"
+                          title="Click aqui para remover esse item do carrinho"
+                          onClick={() => removeItem(item.id)}
+                        >
+                          <img
+                            src={trash}
+                            alt="Imagem de uma lixeira para apagar item do carrinho"
+                          />
+                        </Button>
+                      </S.CardItem>
+                    </>
+                  ))}
+                </ul>
+                <div>
+                  <S.CardTotal color={'orange'}>
+                    <span>Valor total</span>
+                    <span>{moneyFormat(getTotalPrice())}</span>
+                  </S.CardTotal>
+                  <Button
+                    type="button"
+                    title="Continuar para a entrega"
+                    onClick={handleCheckout}
+                  >
+                    Continuar com a entrega
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <Text color={'orange'}>
+                Adicione um item ao carrinho para continuar com a compra.
+              </Text>
+            )}
           </S.CartContainer>
         </>
         <S.CheckoutContainer

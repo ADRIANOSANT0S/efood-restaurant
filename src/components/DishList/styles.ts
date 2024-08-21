@@ -1,3 +1,4 @@
+import { breakPointers } from './../../GlobalStyles/index'
 import styled from 'styled-components'
 import { ImageBg } from '../BackgroundImag/styles'
 import { colors } from '../../GlobalStyles'
@@ -14,7 +15,7 @@ export const Main = styled.main`
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.8);
     }
   }
 `
@@ -33,7 +34,7 @@ export const TitleCountry = styled.h2`
   font-weight: 100;
   line-height: 37.5px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: ${breakPointers.mobile}) {
     font-size: 24px;
   }
 `
@@ -46,17 +47,19 @@ export const DishesList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   padding: 56px 0 120px 0;
+  flex-wrap: wrap;
+  margin: 0;
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: ${breakPointers.mobile}) and (max-width: ${breakPointers.tablet}) {
     grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    justify-items: center;
-    column-gap: 0;
+    align-items: stretch;
+    justify-items: stretch;
+    column-gap: 24px;
   }
 
   @media screen and (max-width: 768px) {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    align-items: center;
   }
 `
