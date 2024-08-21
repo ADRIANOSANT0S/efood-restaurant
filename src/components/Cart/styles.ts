@@ -2,58 +2,32 @@ import styled from 'styled-components'
 import { colors } from '../../GlobalStyles'
 import { ButtonContainer } from '../Button/styles'
 
-export const Overlay = styled.div`
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100dvh;
-  background-color: #000;
-  opacity: 0.7;
-  z-index: 1;
-`
-
-export const CardContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100dvh;
-  display: none;
-  justify-content: flex-end;
-  transition: 0.5 ease;
-
-  &.is-open {
-    display: flex;
-    transition: 0.5 ease;
+export const CartContainer = styled.div`
+  &.hide {
+    display: none;
   }
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    row-gap: 16px;
-    margin-bottom: 40px;
+  &.show {
+    display: block;
   }
 `
+
+export const CheckoutContainer = styled.div`
+  &.hide {
+    display: none;
+  }
+
+  &.show {
+    display: block;
+  }
+`
+
 export const CardEntry = styled.h3`
   font-size: 16px;
   font-weight: 500;
   color: ${colors.white2};
 `
 
-export const Aside = styled.aside`
-  max-width: 360px;
-  width: 100%;
-  background-color: ${colors.red};
-  padding: 32px 8px 0 8px;
-  z-index: 10;
-
-  /* Esse seletor deixa o último butão com a largura total */
-  div > ${ButtonContainer}:last-of-type {
-    width: 100%;
-  }
-`
 export const CardItem = styled.li`
   display: flex;
   padding: 8px 8px 12px 8px;
@@ -61,6 +35,7 @@ export const CardItem = styled.li`
   color: ${colors.red};
   position: relative;
   height: 100px;
+  margin-bottom: 16px;
 
   img {
     object-fit: cover;
@@ -102,8 +77,8 @@ export const CardTotal = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
   color: ${colors.orange};
   font-size: 16px;
   font-weight: 700;
+  margin: 40px 0 16px 0;
 `

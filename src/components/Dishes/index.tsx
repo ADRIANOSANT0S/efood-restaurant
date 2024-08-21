@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/card'
 import { getLimitDescription, moneyFormat } from '../../utils'
 
-import { CardapioItem } from '../../pages/Home'
-
 import Button from '../Button'
 import TextP from '../TextP'
 
@@ -20,21 +18,22 @@ import {
 import close from '../../assets/images/close.png'
 
 type Props = {
-  restaurantDishes: CardapioItem
+  restaurantDishes: MenuItem
 }
 
 const Dishes = ({ restaurantDishes }: Props) => {
   const dispatch = useDispatch()
 
-  const addToCard = () => {
-    dispatch(add(restaurantDishes))
-    dispatch(open())
-  }
-
   const [modalVisible, setModalVisible] = useState(false)
 
   const toggleModal = () => {
     setModalVisible(!modalVisible)
+  }
+
+  const addToCard = () => {
+    dispatch(add(restaurantDishes))
+    dispatch(open())
+    toggleModal()
   }
 
   if (!restaurantDishes) {

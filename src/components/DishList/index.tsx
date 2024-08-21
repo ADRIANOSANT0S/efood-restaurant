@@ -7,13 +7,12 @@ import {
   RestaurantTitle,
   DishesList
 } from './styles'
-import { CardapioItem } from '../../pages/Home'
 
 type Props = {
   imgBg: string
   title: string
   subTitle: string
-  restaurantDishes: CardapioItem[]
+  restaurantDishes: MenuItem[]
 }
 
 const DishList = ({ imgBg, title, subTitle, restaurantDishes }: Props) => (

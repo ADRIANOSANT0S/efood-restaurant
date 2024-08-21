@@ -4,13 +4,14 @@ import { useGetDishesQuery } from '../../services/api'
 
 import DishList from '../../components/DishList'
 import Header from '../../components/Header'
+import Loading from '../../components/Loading'
 
 const DishesPage = () => {
   const { id } = useParams()
   const { data: restaurant, isLoading, error } = useGetDishesQuery(id!)
 
   if (isLoading) {
-    return <h3>Carregando...</h3>
+    return <Loading />
   }
 
   if (error) {

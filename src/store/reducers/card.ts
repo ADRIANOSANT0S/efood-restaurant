@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { CardapioItem } from '../../pages/Home'
 
 type RestaurantState = {
-  items: CardapioItem[]
+  items: MenuItem[]
   isOpen: boolean
 }
 
@@ -15,7 +14,7 @@ const cardSlice = createSlice({
   name: 'restaurant',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<CardapioItem>) => {
+    add: (state, action: PayloadAction<MenuItem>) => {
       const item = state.items.find((item) => item.id === action.payload.id)
       if (!item) {
         state.items.push(action.payload)
