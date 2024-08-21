@@ -72,7 +72,7 @@ export const ModalContainer = styled.div`
   background-color: ${colors.red};
 
   img {
-    object-fit: contain;
+    object-fit: all;
     width: 280px;
     height: 280px;
 

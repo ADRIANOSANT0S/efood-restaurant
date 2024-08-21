@@ -30,7 +30,7 @@ export const CardItem = styled.li`
   margin-bottom: 16px;
 
   img {
-    object-fit: cover;
+    object-fit: all;
     width: 80px;
     height: 80px;
     margin-right: 8px;
