@@ -28,11 +28,5 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
   }
 
-  .showContainer {
-    display: block;
-  }
-
-  .hide {
-    display: none;
-  }
+  
 `

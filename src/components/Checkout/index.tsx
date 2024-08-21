@@ -263,7 +263,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
             </S.DataSendOrder>
 
             <S.DataConfirmationOrder
-              className={isOrderSend ? 'showContainer' : 'hide'}
+              className={isOrderSend ? 'showContainer' : ''}
             >
               <S.title>Valor a pagar - {moneyFormat(totalPrice)}</S.title>
               <S.InputGroup>

@@ -9,6 +9,10 @@ export type SizeProp = {
 
 export const DataSendOrder = styled.div`
   display: none;
+
+  .showContainer {
+    display: block;
+  }
 `
 
 export const DataConfirmationOrder = styled(DataSendOrder)``
