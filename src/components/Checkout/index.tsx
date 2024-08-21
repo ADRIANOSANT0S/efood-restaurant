@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
@@ -106,7 +106,6 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   const finishBuy = () => {
     setTimeout(() => navigate('/'), 300) // Add delay for better UX
     closeSidebar()
-    dispatch(clean())
   }
 
   const goToNext = () => {
@@ -121,6 +120,12 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   const goBackAddress = () => {
     setIsOrderSend(false)
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clean())
+    }
+  }, [isSuccess, dispatch])
 
   const checkInputError = (fieldName: string) => {
     const isTouched = fieldName in form.touched
