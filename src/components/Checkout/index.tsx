@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
@@ -12,6 +12,7 @@ import { moneyFormat } from '../../utils'
 import { clean, close } from '../../store/reducers/card'
 
 import * as S from './styles'
+import { useNavigate } from 'react-router-dom'
 
 type CheckoutProps = {
   totalPrice: number
@@ -22,6 +23,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   const dispatch = useDispatch()
   const [purchase, { data, isSuccess }] = usePurchaseMutation()
   const [isOrderSend, setIsOrderSend] = useState(false)
+  const navigate = useNavigate()
 
   const form = useFormik({
     initialValues: {
@@ -103,6 +105,9 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
 
   const finishBuy = () => {
     closeSidebar()
+    dispatch(clean())
+    navigate('/')
+    setTimeout(() => window.location.reload(), 300)
   }
 
   const goToNext = () => {
@@ -117,13 +122,6 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   const goBackAddress = () => {
     setIsOrderSend(false)
   }
-
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(clean())
-      setTimeout(() => window.location.reload(), 300)
-    }
-  }, [isSuccess, dispatch])
 
   const checkInputError = (fieldName: string) => {
     const isTouched = fieldName in form.touched
