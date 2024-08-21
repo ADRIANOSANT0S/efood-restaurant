@@ -9,7 +9,7 @@ import Button from '../Button'
 import Sidebar from '../Sidebar'
 import TextP from '../TextP'
 
-import { close } from '../../store/reducers/card'
+import { clean, close } from '../../store/reducers/card'
 
 import * as S from './styles'
 import { usePurchaseMutation } from '../../services/api'
@@ -107,6 +107,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   const finishBuy = () => {
     setTimeout(() => navigate('/'), 300) // Add delay for better UX
     closeSidebar()
+    dispatch(clean())
   }
 
   const goToNext = () => {
@@ -336,7 +337,6 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
                 <Button
                   type="submit"
                   title="Click aqui para continuar a compra"
-                  onClick={form.handleSubmit}
                 >
                   Finalizar pagamento
                 </Button>

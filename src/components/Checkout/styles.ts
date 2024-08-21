@@ -42,10 +42,11 @@ export const InputGroup = styled.div`
     padding: 8px;
     color: ${colors.black};
     font-weight: 700;
+    border: 2px solid ${colors.orange};
     outline: none;
 
     &.error {
-      border: 4px solid red;
+      border: 2px solid red;
     }
   }
 `

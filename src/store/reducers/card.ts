@@ -30,9 +30,12 @@ const cardSlice = createSlice({
     },
     close: (state) => {
       state.isOpen = false
+    },
+    clean: (state) => {
+      state.items = []
     }
   }
 })
 
-export const { add, remove, open, close } = cardSlice.actions
+export const { add, remove, open, close, clean } = cardSlice.actions
 export default cardSlice.reducer

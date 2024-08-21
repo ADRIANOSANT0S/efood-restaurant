@@ -6,8 +6,8 @@ export type Props = {
   color: 'red' | 'white' | 'orange'
 }
 
-const TextP = ({ children, color }: Props) => (
+const Text = ({ children, color }: Props) => (
   <Text color={color}>{children}</Text>
 )
 
-export default TextP
+export default Text
