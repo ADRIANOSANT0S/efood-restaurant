@@ -166,7 +166,9 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
       ) : (
         <>
           <form onSubmit={form.handleSubmit}>
-            <S.DataSendOrder className={!isOrderSend ? 'showContainer' : ''}>
+            <S.DataSendOrder
+              className={!isOrderSend ? 'showContainer' : 'hide'}
+            >
               <S.title>Entrega</S.title>
               <S.InputGroup>
                 <label htmlFor="fullName">Quem irá receber</label>
@@ -261,7 +263,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
             </S.DataSendOrder>
 
             <S.DataConfirmationOrder
-              className={isOrderSend ? 'showContainer' : ''}
+              className={isOrderSend ? 'showContainer' : 'hide'}
             >
               <S.title>Valor a pagar - {moneyFormat(totalPrice)}</S.title>
               <S.InputGroup>

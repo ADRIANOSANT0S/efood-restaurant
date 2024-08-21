@@ -31,4 +31,8 @@ export const GlobalStyles = createGlobalStyle`
   .showContainer {
     display: block;
   }
+
+  .hide {
+    display: none;
+  }
 `
