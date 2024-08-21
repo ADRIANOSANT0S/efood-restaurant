@@ -4,7 +4,7 @@ import { ButtonContainer } from '../Button/styles'
 import { Text } from '../Text/styles'
 
 export type SizeProp = {
-  $widthElement?: number
+  widthElement?: number
 }
 
 export const DataSendOrder = styled.div`
@@ -63,7 +63,7 @@ export const InlineInputGroup = styled.div<SizeProp>`
   div {
     &:last-child {
       width: ${(prop) =>
-        prop.$widthElement ? `${prop.$widthElement}px` : '100%'};
+        prop.widthElement ? `${prop.widthElement}px` : '100%'};
     }
   }
 `

@@ -12,7 +12,7 @@ export const CartContainer = styled.div`
   }
 `
 
-export const CheckoutContainer = styled(CartContainer)
+export const CheckoutContainer = styled(CartContainer)``
 
 export const CardEntry = styled.h3`
   font-size: 16px;
