@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { colors } from '../../GlobalStyles'
 import { ButtonContainer } from '../Button/styles'
-import { Text } from '../TextP/styles'
+import { Text } from '../Text/styles'
 
 export type SizeProp = {
   $widthElement?: number

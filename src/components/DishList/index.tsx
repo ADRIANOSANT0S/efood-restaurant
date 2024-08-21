@@ -1,12 +1,7 @@
 import Dishes from '../Dishes'
 import BackgroundImag from '../BackgroundImag'
-import {
-  Main,
-  DishSection,
-  TitleCountry,
-  RestaurantTitle,
-  DishesList
-} from './styles'
+
+import * as S from './styles'
 
 type Props = {
   imgBg: string
@@ -16,22 +11,22 @@ type Props = {
 }
 
 const DishList = ({ imgBg, title, subTitle, restaurantDishes }: Props) => (
-  <Main>
+  <S.Main>
     <BackgroundImag url={imgBg} description={title}>
-      <DishSection className="container">
-        <TitleCountry>{subTitle}</TitleCountry>
-        <RestaurantTitle as="h1">{title}</RestaurantTitle>
-      </DishSection>
+      <S.DishSection className="container">
+        <S.TitleCountry>{subTitle}</S.TitleCountry>
+        <S.RestaurantTitle as="h1">{title}</S.RestaurantTitle>
+      </S.DishSection>
       <div className="overlay"></div>
     </BackgroundImag>
     <div className="container">
-      <DishesList>
+      <S.DishesList>
         {restaurantDishes.map((dish) => (
           <Dishes key={dish.id} restaurantDishes={dish} />
         ))}
-      </DishesList>
+      </S.DishesList>
     </div>
-  </Main>
+  </S.Main>
 )
 
 export default DishList

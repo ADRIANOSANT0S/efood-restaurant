@@ -1,17 +1,16 @@
-import { useDispatch } from 'react-redux'
-
-import { open } from '../../store/reducers/card'
+import { useDispatch, useSelector } from 'react-redux'
 
 import BackgroundImag from '../BackgroundImag'
-
-import logo from '../../assets/images/logo.png'
-import imageBg from '../../assets/images/imagem-bg.png'
 import Button from '../Button'
 import ImageLink from '../ImagLink'
 
-import { Text, Container, NavContainer } from './styles'
-import { useSelector } from 'react-redux'
+import { open } from '../../store/reducers/card'
 import { RootReducer } from '../../store'
+
+import logo from '../../assets/images/logo.png'
+import imageBg from '../../assets/images/imagem-bg.png'
+
+import * as S from './styles'
 
 export type Props = {
   isHome: boolean
@@ -34,18 +33,18 @@ const Header = ({ isHome = false }: Props) => {
       >
         <div className="container">
           {isHome ? (
-            <Container>
+            <S.Container>
               <ImageLink
                 to="/"
                 image={logo}
                 description="loga da marca Efood"
               />
-              <Text>
+              <S.Text>
                 Viva experiências gastronômicas no conforto da sua casa
-              </Text>
-            </Container>
+              </S.Text>
+            </S.Container>
           ) : (
-            <NavContainer>
+            <S.NavContainer>
               <Button type="link" to="/" title="Ir para página home" size="big">
                 Restaurantes
               </Button>
@@ -62,7 +61,7 @@ const Header = ({ isHome = false }: Props) => {
               >
                 {items.length} Produtos(s) no carrinho
               </Button>
-            </NavContainer>
+            </S.NavContainer>
           )}
         </div>
       </BackgroundImag>

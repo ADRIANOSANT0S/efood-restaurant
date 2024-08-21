@@ -7,13 +7,13 @@ import InputMask from 'react-input-mask'
 
 import Button from '../Button'
 import Sidebar from '../Sidebar'
-import TextP from '../TextP'
+import Text from '../Text'
 
+import { usePurchaseMutation } from '../../services/api'
+import { moneyFormat } from '../../utils'
 import { clean, close } from '../../store/reducers/card'
 
 import * as S from './styles'
-import { usePurchaseMutation } from '../../services/api'
-import { moneyFormat } from '../../utils'
 
 type CheckoutProps = {
   totalPrice: number
@@ -137,23 +137,23 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
         <>
           <S.OrderConfirmation>
             <S.title>Pedido realizado - {data.orderId} </S.title>
-            <TextP color="orange">
+            <Text color="orange">
               Estamos felizes em informar que seu pedido já está em processo de
               preparação e, em breve, será entregue no endereço fornecido.
-            </TextP>
-            <TextP color="orange">
+            </Text>
+            <Text color="orange">
               Gostaríamos de ressaltar que nossos entregadores não estão
               autorizados a realizar cobranças extras.
-            </TextP>
-            <TextP color="orange">
+            </Text>
+            <Text color="orange">
               Lembre-se da importância de higienizar as mãos após o recebimento
               do pedido, garantindo assim sua segurança e bem-estar durante a
               refeição.
-            </TextP>
-            <TextP color="orange">
+            </Text>
+            <Text color="orange">
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
-            </TextP>
+            </Text>
             <Button
               type="button"
               title="Click aqui e conclua o pedido"

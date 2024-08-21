@@ -1,13 +1,11 @@
 import { ReactNode } from 'react'
-import { Text } from './styles'
+import { Text as P } from './styles'
 
 export type Props = {
   children: ReactNode
   color: 'red' | 'white' | 'orange'
 }
 
-const Text = ({ children, color }: Props) => (
-  <Text color={color}>{children}</Text>
-)
+const Text = ({ children, color }: Props) => <P color={color}>{children}</P>
 
 export default Text

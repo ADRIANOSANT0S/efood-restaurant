@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom'
 
-import { useGetDishesQuery } from '../../services/api'
-
 import DishList from '../../components/DishList'
 import Header from '../../components/Header'
 import Loading from '../../components/Loading'
+
+import { useGetDishesQuery } from '../../services/api'
 
 type DishesParams = {
   id: string

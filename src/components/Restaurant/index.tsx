@@ -1,18 +1,13 @@
 import BackgroundImag from '../BackgroundImag'
 import Tag from '../Tag'
-import TextP from '../TextP'
+import Text from '../Text'
 import { ButtonLink } from '../Button/styles'
 
-import star from '../../assets/images/star_favorite.png'
-
-import {
-  ItemContainer,
-  DetailsContainer,
-  Title,
-  InfosContainer,
-  StarContainer
-} from './styles'
 import { getLimitDescription } from '../../utils'
+
+import * as S from './styles'
+
+import star from '../../assets/images/star_favorite.png'
 
 type Props = {
   image: string
@@ -34,22 +29,22 @@ const Restaurant = ({
   id
 }: Props) => {
   return (
-    <ItemContainer>
+    <S.ItemContainer>
       <BackgroundImag url={image} description={title}>
         {highline ? <Tag>Destaque da semana</Tag> : ''}
         <Tag>{type}</Tag>
       </BackgroundImag>
-      <DetailsContainer>
-        <InfosContainer>
-          <Title>{title}</Title>
-          <StarContainer>
-            <Title as="span">{nota}</Title>
+      <S.DetailsContainer>
+        <S.InfosContainer>
+          <S.Title>{title}</S.Title>
+          <S.StarContainer>
+            <S.Title as="span">{nota}</S.Title>
             <img src={star} alt="estrelas de favoritos" />
-          </StarContainer>
-        </InfosContainer>
-        <TextP color={'red'}>
+          </S.StarContainer>
+        </S.InfosContainer>
+        <Text color={'red'}>
           {getLimitDescription(description, 270, 0, 250)}
-        </TextP>
+        </Text>
         <ButtonLink
           size="small"
           type="link"
@@ -58,8 +53,8 @@ const Restaurant = ({
         >
           Saiba mais
         </ButtonLink>
-      </DetailsContainer>
-    </ItemContainer>
+      </S.DetailsContainer>
+    </S.ItemContainer>
   )
 }
 
