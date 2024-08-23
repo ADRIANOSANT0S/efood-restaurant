@@ -19,6 +19,15 @@ type CheckoutProps = {
   goBack: () => void
 }
 
+type FormValues = {
+  fullName: string
+  address: string
+  city: string
+  zipCode: string
+  localNumber: string
+  complement: string
+}
+
 const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
   const dispatch = useDispatch()
   const [purchase, { data, isSuccess }] = usePurchaseMutation()
@@ -99,6 +108,19 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
     }
   })
 
+  const areDeliveryFieldsFilled = () => {
+    const requiredFields: (keyof FormValues)[] = [
+      'fullName',
+      'address',
+      'city',
+      'zipCode',
+      'localNumber'
+    ]
+    return requiredFields.every(
+      (field) => form.values[field].trim() !== '' && !checkInputError(field)
+    )
+  }
+
   const closeSidebar = () => {
     dispatch(close())
   }
@@ -108,6 +130,14 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
     dispatch(clean())
     navigate('/')
     setTimeout(() => window.location.reload(), 300)
+  }
+
+  const checkInputError = (fieldName: string) => {
+    const isTouched = fieldName in form.touched
+    const isInvalid = fieldName in form.errors
+    const hasError = isTouched && isInvalid
+
+    return hasError
   }
 
   const goToNext = () => {
@@ -121,14 +151,6 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
 
   const goBackAddress = () => {
     setIsOrderSend(false)
-  }
-
-  const checkInputError = (fieldName: string) => {
-    const isTouched = fieldName in form.touched
-    const isInvalid = fieldName in form.errors
-    const hasError = isTouched && isInvalid
-
-    return hasError
   }
 
   return (
@@ -249,6 +271,7 @@ const Checkout = ({ totalPrice, goBack }: CheckoutProps) => {
                   type="button"
                   title="Click aqui para continuar a compra"
                   onClick={goToNext}
+                  disabled={!areDeliveryFieldsFilled()}
                 >
                   Continuar com o pagamento
                 </Button>

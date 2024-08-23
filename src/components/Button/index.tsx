@@ -8,12 +8,26 @@ export type Props = {
   children: ReactNode
   title: string
   size?: 'small' | 'big'
+  disabled?: boolean
 }
 
-const Button = ({ type, to, onClick, children, title, size }: Props) => {
+const Button = ({
+  type,
+  to,
+  onClick,
+  children,
+  title,
+  size,
+  disabled
+}: Props) => {
   if (type === 'button' || type === 'submit') {
     return (
-      <S.ButtonContainer type="button" title={title} onClick={onClick}>
+      <S.ButtonContainer
+        type="button"
+        title={title}
+        onClick={onClick}
+        disabled={disabled}
+      >
         {children}
       </S.ButtonContainer>
     )

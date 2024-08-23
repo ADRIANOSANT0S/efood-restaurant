@@ -56,7 +56,7 @@ const Card = () => {
                     <>
                       <S.CardItem key={item.id}>
                         <img src={item.foto} alt={item.nome} />
-                        <S.Price key={item.id}>
+                        <S.Price>
                           <S.Title>{item.nome}</S.Title>
                           <S.Price>{moneyFormat(item.preco)}</S.Price>
                         </S.Price>
